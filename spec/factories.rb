@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :user_report do
+    reporter nil
+    reported nil
+    comment "MyString"
+  end
   factory :group_member do
     association :user, factory: :user1
     group

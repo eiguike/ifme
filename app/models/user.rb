@@ -71,6 +71,11 @@ class User < ApplicationRecord
   has_many :moments, foreign_key: :userid
   after_initialize :set_defaults, unless: :persisted?
 
+  has_many :reports_received_by_me, class_name: "UserReport",
+            foreign_key: "reported_id"
+  has_many :reports_created_by_me, class_name: "UserReport",
+            foreign_key: "reporter_id"
+
   validates :name, presence: true
   validates :locale, inclusion: { in: [nil, 'en', 'es', 'ptbr', 'sv'] }
 
